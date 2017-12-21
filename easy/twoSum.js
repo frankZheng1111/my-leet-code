@@ -8,15 +8,19 @@
  ** @param {number[]} nums
  ** @param {number} target
  ** @return {number[]}
+ **
+ ** 思路: 转成键值对结构以降低时间复杂度至O(n)
  **/
 let twoSum = function(nums, target) {
-  for (let i = 0; i < nums.length; i ++) {
-    if (nums[i] > target) { continue; }
-    for (let j = i + 1; j < nums.length; j ++) {
-      if (nums[j] > target) { continue; }
-      if (nums[i] + nums[j] === target) {
-        return [i, j];
-      }
+  if (nums.length <= 1 ) { throw new Error('invalid_nums'); }
+  let numsHash = {};
+  for (let i in nums) {
+    let num1 = nums[i];
+    let num2 = target - num1;
+    if (numsHash[num2]) {
+      return [parseInt(numsHash[num2]), parseInt(i)];
+    } else {
+      numsHash[num1] = i;
     }
   }
 };
