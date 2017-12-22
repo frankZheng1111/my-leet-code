@@ -9,26 +9,19 @@
  **/
 let lengthOfLongestSubstring = function(s) {
   let words = s.split('');
+  let startIndex = 0;
   let maxLength = 0;
-  let maxLengthSubStrWords = [];
+  let usedStr= {};
   for (let i in words) {
-    for (let j = i; j < words.length; j ++) {
-      let word = words[j];
-      if (maxLengthSubStrWords.includes(word)) {
-        break;
-      } else {
-        maxLengthSubStrWords.push(word);
-        if (maxLengthSubStrWords.length > maxLength) {
-          maxLength = maxLengthSubStrWords.length;
-        }
-      }
+    i = parseInt(i);
+    if ((usedStr[words[i]] || usedStr[words[i]] === 0) && startIndex <= usedStr[words[i]]) {
+      startIndex = usedStr[words[i]] + 1;
+    } else {
+      maxLength = Math.max(maxLength, i - startIndex + 1);
     }
-    maxLengthSubStrWords = [];
-    if (words.length - 1 - i <= maxLength) {
-      break;
-    }
+    usedStr[words[i]] = i;
   }
   return maxLength;
 };
 
-module.exports = lengthOfLongestSubstring.js
+module.exports = lengthOfLongestSubstring
