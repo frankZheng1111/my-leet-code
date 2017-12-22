@@ -17,6 +17,7 @@
  */
 let removeNthFromEnd = function(head, n) {
   let stack = [];
+  // 先压入堆栈
   (function pushListInStack(head) {
     stack.push(head.val);
     if (head.next) {
@@ -24,10 +25,13 @@ let removeNthFromEnd = function(head, n) {
     }
     return;
   })(head);
+  // 移除指定位置元素
   let tmpStack = [];
   for (let i = 0; i < n - 1; i ++) { tmpStack.unshift(stack.pop()); }
   stack.pop();
   stack.push(...tmpStack);
+
+  // 重新构建链表
   return stack;
 };
 
