@@ -21,7 +21,7 @@ let removeNthFromEnd = function(head, n) {
   (function pushListInStack(head) {
     stack.push(head.val);
     if (head.next) {
-      pushListInStack(head.next)
+      pushListInStack(head.next);
     }
     return;
   })(head);

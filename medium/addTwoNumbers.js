@@ -28,7 +28,7 @@ let addTwoNumbers = function(l1, l2) {
   function buildListNode(numbers) {
     let listNode = {};
     let dupNumbers = [];
-    dupNumbers.push(...numbers)
+    dupNumbers.push(...numbers);
     listNode.val = dupNumbers.pop();
     if (dupNumbers.length) {
       listNode.next = buildListNode(dupNumbers);

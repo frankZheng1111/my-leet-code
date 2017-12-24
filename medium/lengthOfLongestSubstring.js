@@ -24,4 +24,4 @@ let lengthOfLongestSubstring = function(s) {
   return maxLength;
 };
 
-module.exports = lengthOfLongestSubstring
+module.exports = lengthOfLongestSubstring;
